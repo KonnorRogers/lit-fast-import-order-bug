@@ -12,8 +12,8 @@ import esbuild from "esbuild"
   const defaultConfig = {
     entryPoints: ["./src/index.ts"],
     sourcemap: true,
-    platform: "browser",
-    target: "es2018",
+
+    target: "es2017",
     watch: process.argv.includes("--watch"),
     color: true,
     bundle: true,
@@ -42,7 +42,6 @@ import esbuild from "esbuild"
       entryPoints: entries,
       outdir: 'dist',
       format: 'esm',
-      target: "es2020",
       external: ['./node_modules/*'],
       splitting: true,
       chunkNames: 'chunks/[name]-[hash]'

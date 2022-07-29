@@ -1,5 +1,25 @@
+// import { html, css, LitElement } from "lit"
+// Uncomment the above
+
+
+import { attr, FASTElement, css as FASTCSS, html as FASTHTML } from '@microsoft/fast-element';
+import {
+  FoundationElement,
+} from "@microsoft/fast-foundation"
+
+// Move this to the top of the file to get "{reflect: true, type: Boolean}" working
 import { html, css, LitElement } from "lit"
-import { property } from 'lit/decorators/property.js';
+import { property } from 'lit/decorators.js';
+
+class NameTag extends FoundationElement {
+  @attr greeting: string = 'Hello';
+
+  static definition = {
+    name: "he-name-tag",
+    template: FASTHTML`<div>${x => x.greeting}</div>`,
+    styles: FASTCSS`div { color: red }`,
+  }
+}
 
 class MyDetails extends LitElement {
   static get styles () {
@@ -15,20 +35,8 @@ class MyDetails extends LitElement {
     `
   }
 
-  @property({ reflect: true, type: Boolean }) expanded: boolean = false
-
-  // expanded: boolean;
-
-  // static get properties () {
-  //   return {
-  //     expanded: { reflect: true, type: Boolean }
-  //   }
-  // }
-
-  // constructor () {
-  //   super()
-  //   this.expanded = true
-  // }
+  // removing "type: Boolean" causes reflection to happen as expected.
+  @property({ reflect: true, type: Boolean }) expanded: boolean = true;
 
   render () {
     return html`
@@ -40,4 +48,5 @@ class MyDetails extends LitElement {
   }
 }
 
-window.customElements.define("my-details", MyDetails)
+FASTElement.define(NameTag)
+window.customElements.define("he-details", MyDetails)

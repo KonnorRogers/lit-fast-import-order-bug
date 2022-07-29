@@ -9,19 +9,19 @@
     "lint": "ts-standard src/",
     "fix": "ts-standard src/ --fix",
     "test": "web-test-runner",
-    "test:ci": "pnpm lint && pnpm build && pnpm build:types && web-test-runner",
+    "test:ci": "npm run lint && npm run build && npm run build:types && web-test-runner",
     "test:watch": "web-test-runner --watch",
     "build": "rm -rf dist && node esbuild.config.js",
     "build:types": "tsc",
     "start:example": "web-dev-server",
-    "build:example": "npx pnpm build && rm -rf examples/dist && cp -R dist/ examples/dist",
-    "start": "pnpm build -- --watch",
-    "deploy": "pnpm build && pnpm build:types && standard-version --release-as",
-    "deploy:beta": "pnpm build && pnpm build:types && standard-version --prerelease beta",
-    "deploy:patch": "pnpm build && pnpm build:types && standard-version --release-as patch",
-    "deploy:minor": "pnpm build && pnpm build:types && standard-version --release-as minor",
-    "deploy:major": "pnpm build && pnpm build:types && standard-version --release-as major",
-    "push": "git push --follow-tags origin main && pnpm publish"
+    "build:example": "npx npm run build && rm -rf examples/dist && cp -R dist/ examples/dist",
+    "start": "npm run build -- --watch",
+    "deploy": "npm run build && npm run build:types && standard-version --release-as",
+    "deploy:beta": "npm run build && npm run build:types && standard-version --prerelease beta",
+    "deploy:patch": "npm run build && npm run build:types && standard-version --release-as patch",
+    "deploy:minor": "npm run build && npm run build:types && standard-version --release-as minor",
+    "deploy:major": "npm run build && npm run build:types && standard-version --release-as major",
+    "push": "git push --follow-tags origin main && npm run publish"
   },
   "files": [
     "dist",
@@ -61,6 +61,9 @@
     "access": "public"
   },
   "dependencies": {
-    "lit": "^2.2.8"
+    "@microsoft/fast-element": "1.10.2",
+    "@microsoft/fast-foundation": "2.46.8",
+    "@microsoft/fast-web-utilities": "^5.4.1",
+    "lit": "^2.2.7"
   }
 }
