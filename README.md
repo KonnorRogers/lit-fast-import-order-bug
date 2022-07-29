@@ -35,3 +35,21 @@ npx parcel examples/parcel-index.html
 ```
 
 The issue is observed using both ESbuild and Parcel.
+
+### Order is important
+
+#### Doesn't work
+
+```js
+import { attr, FASTElement, css as FASTCSS, html as FASTHTML } from '@microsoft/fast-element';
+
+// Move this to the top of the file to get "{reflect: true, type: Boolean}" working
+import { html, css, LitElement } from "lit"
+```
+
+#### Does work
+
+```js
+import { html, css, LitElement } from "lit"
+import { attr, FASTElement, css as FASTCSS, html as FASTHTML } from '@microsoft/fast-element';
+```
