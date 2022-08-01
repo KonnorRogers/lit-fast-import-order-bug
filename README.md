@@ -1,8 +1,8 @@
 ## Getting started
 
 ```bash
-git clone https://github.com/fast-lit-esbuild-order-issue
-cd fast-lit-esbuild-order-issue
+git clone https://github.com/lit-fast-import-order-bug
+cd lit-fast-import-order-bug
 npm install
 ```
 
